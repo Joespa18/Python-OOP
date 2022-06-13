@@ -33,7 +33,9 @@ class CuentaBancaria:
     # BONUS NINJA: utiliza un método de clase para imprimir todas las instancias de la información de una cuenta bancaria
     @classmethod
     def todos_los_movimientos(cls):
-        print(CuentaBancaria.Movimientos)
+        cls.Movimientos = cls.mostrar_info_cuenta
+        print(cls.Movimientos)
+        
 
 # Crea 2 cuentas
 cuenta1 = CuentaBancaria(0.012)
@@ -46,4 +48,4 @@ cuenta1.deposito(500).deposito(1000).deposito(500).retiro(1000).generar_interes(
 cuenta2.deposito(500).deposito(500).retiro(250).retiro(250).retiro(500).retiro(1000).generar_interes().mostrar_info_cuenta()
 
 # Bonus Ninja
-print(CuentaBancaria.Movimientos)
+CuentaBancaria.todos_los_movimientos()
