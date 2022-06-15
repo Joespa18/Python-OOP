@@ -29,10 +29,6 @@ class Usuario:
         self.nombre = nombre
         self.correo = correo
         self.cuenta = CuentaBancaria(tasa_interes=0.02, balance=0)
-
-    def agregar_cuenta(self, nombre_cuenta):
-        self.cuenta += nombre_cuenta
-
     # Actualizar el método hacer_depósito de la clase Usuario
     def hacer_depósito(self, monto_deposito):
         self.cuenta.balance += monto_deposito
