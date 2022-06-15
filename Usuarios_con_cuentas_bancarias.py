@@ -28,8 +28,7 @@ class Usuario:
     def __init__(self, nombre, correo):
         self.nombre = nombre
         self.correo = correo
-        self.cuenta = []
-        self.cuenta.append(CuentaBancaria(tasa_interes=0.02, balance=0))
+        self.cuenta = CuentaBancaria(tasa_interes=0.02, balance=0)
 
     def agregar_cuenta(self, nombre_cuenta):
         self.cuenta += nombre_cuenta
