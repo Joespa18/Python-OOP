@@ -1,11 +1,12 @@
 # Crea una clase CuentaBancaria con los atributos tasa de interés y balance
 class CuentaBancaria:
 
-    Movimientos = [] #Bonus
-    def __init__(self, tasa_interes, balance=0):
+    cuentas = [] #Bonus
+    def __init__(self, tipo, tasa_interes, balance=0):
+        self.tipo = tipo
         self.tasa_interes = tasa_interes
         self.balance = balance
-        CuentaBancaria.Movimientos.append(self) #Bonus
+        CuentaBancaria.cuentas.append(self) #Bonus
 
     # Agrega un método depósito a la clase CuentaBancaria
     def deposito(self, monto_deposito):
@@ -19,7 +20,7 @@ class CuentaBancaria:
 
     # Agrega un método mostrar_info_cuenta retiro a la clase CuentaBancaria
     def mostrar_info_cuenta(self):
-        print(f"Tasa: {self.tasa_interes} - Balance: {self.balance}")
+        print(f"tipo cuenta: {self.tipo} - Tasa: {self.tasa_interes} - Balance: {self.balance}")
         return self
     
     # Agrega un método generar_interés a la clase CuentaBancaria
@@ -32,14 +33,13 @@ class CuentaBancaria:
 
     # BONUS NINJA: utiliza un método de clase para imprimir todas las instancias de la información de una cuenta bancaria
     @classmethod
-    def todos_los_movimientos(cls):
-        cls.Movimientos = cls.mostrar_info_cuenta
-        print(cls.Movimientos)
-        
+    def todas_las_cuentas(cls):
+        for cuenta in cls.cuentas:
+            cuenta.mostrar_info_cuenta()
 
 # Crea 2 cuentas
-cuenta1 = CuentaBancaria(0.012)
-cuenta2 = CuentaBancaria(0.016, 2000)
+cuenta1 = CuentaBancaria('cuenta corriente', 0.012)
+cuenta2 = CuentaBancaria('cuenta ahorro', 0.016, 2000)
 
 # Para la primera cuenta, haz 3 depósitos y 1 retiro, luego genera intereses y muestra la información de la cuenta, todo en una línea de código (es decir, encadenando)
 cuenta1.deposito(500).deposito(1000).deposito(500).retiro(1000).generar_interes().mostrar_info_cuenta()
@@ -48,4 +48,4 @@ cuenta1.deposito(500).deposito(1000).deposito(500).retiro(1000).generar_interes(
 cuenta2.deposito(500).deposito(500).retiro(250).retiro(250).retiro(500).retiro(1000).generar_interes().mostrar_info_cuenta()
 
 # Bonus Ninja
-CuentaBancaria.todos_los_movimientos()
+CuentaBancaria.todas_las_cuentas()
